@@ -1,0 +1,9 @@
+<h1>Projetos</h1>
+<a href="{% url 'projeto_create' %}">Novo projeto</a>
+<ul>
+  {% for p in projetos %}
+    <li>{{ p.nome }} - {{ p.data_inicio }}</li>
+  {% empty %}
+    <li>Nenhum projeto cadastrado.</li>
+  {% endfor %}
+</ul>
