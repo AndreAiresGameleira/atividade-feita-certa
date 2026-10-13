@@ -1,0 +1,15 @@
+<h1>Tarefas</h1>
+<a href="{% url 'tarefa_create' %}">Nova tarefa</a>
+{% for m in messages %}<p>{{ m }}</p>{% endfor %}
+<ul>
+  {% for t in tarefas %}
+    <li>
+      {{ t.titulo }} ({{ t.get_prioridade_display }}) - Projeto: {{ t.projeto.nome }}
+      {% if t.concluido %}✔{% endif %}
+      <a href="{% url 'tarefa_update' t.pk %}">Editar</a> |
+      <a href="{% url 'tarefa_delete' t.pk %}">Excluir</a>
+    </li>
+  {% empty %}
+    <li>Nenhuma tarefa cadastrada.</li>
+  {% endfor %}
+</ul>
